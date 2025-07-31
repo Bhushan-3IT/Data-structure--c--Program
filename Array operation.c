@@ -79,69 +79,36 @@ Even numbers in the array are:
 2  88  56
 
 
-3)deletion of an element in the array.
+    
+3)deletion of an element in the array
 
-#include <stdio.h>
+#include<stdio.h>
 int main() {
-int n,pos;
-    printf("Enter number of elements: ");
+    int n, pos;
+  printf("Enter number of elements: ");
     scanf("%d", &n);
-   int arr[n];
-  printf("Enter %d elements:\n", n);
-    for(int i = 0; i < n; i++)
+
+    int arr[n];
+    printf("Enter %d elements:\n", n);
+    for(int i = 0; i < n; i++){
         scanf("%d", &arr[i]);
-   printf("Enter position to delete at position:" );
+}
+    printf("Enter position to delete at position: ");
     scanf("%d", &pos);
-  for(int i = pos-1; i < n - 1; i++)
+  if(pos < 1 || pos > n) {
+        printf("Invalid position!");
+        return 1;
+    }
+  for(int i = pos - 1; i < n - 1; i++){
         arr[i] = arr[i + 1];
-    n--;
+}
+  n--; 
+   printf("Array after deletion:");
     for(int i = 0; i < n; i++)
-        printf(" %d ", arr[i]);
+        printf("%d ", arr[i]);
+
     return 0;
 }
-OUTPUT:
-Enter number of elements: 4
-Enter 4 elements:
-68
-4
-81
-9
-Enter position to delete at position:2
-68  81  9
-
-
-4)insertion of an element in the array.
-
-
-#include <stdio.h>
-int main() {
-
-int n, newelement, pos;
-    printf("Enter number of elements: ");
-    scanf("%d", &n);
-   int arr[n];
-  
-  printf("Enter %d elements:\n", n);
-    for(int i = 0; i < n; i++)
-        scanf("%d", &arr[i]);
-             
-   printf("Enter position to insert :");
-    scanf("%d", &pos);
-  
-  printf("Enter new element: ");
-    scanf("%d", &newelement);
-          
-    for(int i = n; i >= pos; i--)
-        arr[i+1] = arr[i ];
-            arr[pos - 1] = newelement;
-    n++;
-           
-            printf("Array after insertion at position %d:\n", pos);
-    for(int i = 0; i < n; i++)
-        printf(" %d ", arr[i]);
-      return 0;
-}
-
 OUTPUT:
 
 Enter number of elements: 3
@@ -149,7 +116,53 @@ Enter 3 elements:
 4
 5
 6
-Enter position to insert :2
-Enter new element: 55
-Array after insertion at position 2:
-4  55  6  6
+Enter position to delete at position:2 
+Array after deletion: 4  6
+
+    
+
+
+4)insertion of an element in the array.
+    
+#include <stdio.h>
+
+int main() {
+    int n, newelement, pos;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+        int arr[n]; 
+    printf("Enter %d elements:\n", n);
+    for(int i = 0; i < n; i++){
+        scanf("%d", &arr[i]);
+}
+  printf("Enter position to insert: ");
+    scanf("%d", &pos);
+   if(pos < 1 || pos > n + 1) {
+        printf("Invalid position!");
+        return 1;
+    }
+
+    printf("Enter new element: ");
+    scanf("%d", &newelement);
+  for(int i = n; i >= pos; i--){
+        arr[i] = arr[i - 1];
+}
+    arr[pos - 1] = newelement;
+    n++; 
+
+    printf("Array after insertion at position %d:\n", pos);
+    for(int i = 0; i < n; i++){
+        printf("%d ", arr[i]);
+}
+    return 0;
+}
+OUTPUT:
+Enter number of elements: 5
+Enter 5 elements:
+2 5 9 23 55
+Enter position to insert: 1
+Enter new element: 56
+Array after insertion at position 1:
+56 2 5 9 23 55 
