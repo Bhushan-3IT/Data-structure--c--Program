@@ -143,3 +143,51 @@ char pop(){
     }
      return 0;
 }
+
+5) undo operation using stack
+
+#include <stdio.h>
+#include <string.h>
+#define MAX 1000
+char stack[MAX];
+
+int top = -1;
+
+void push(int c) {
+    if (top == MAX-1) {
+        printf("Stack Overflow");
+        return;
+    }  
+         stack[++top] = c;
+   }
+
+char pop(){
+    if (top == -1) {
+        printf("Stack Underflow\n");
+        return '\0';
+    } 
+          return stack[top--];
+    }
+
+    void showText() {
+        printf("after undo: ");
+   for (int i = 0; i <= top; i++) {
+        printf("%c", stack[i]);
+    }
+    printf("\n");
+}
+
+
+int main(){
+     char str[MAX];
+     printf("enetr string:");
+     scanf("%s",&str);
+     for (int i = 0; str[i] != '\0'; i++) {
+        push(str[i]);
+    }
+   for (int i = 0; i < 1; i++) {
+        pop();
+    }
+showText();
+ return 0;
+}
